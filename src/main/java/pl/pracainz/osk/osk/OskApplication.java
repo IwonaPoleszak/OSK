@@ -9,7 +9,6 @@ import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 public class OskApplication {
 	 
 	
-	
 	public static void main(String[] args) {
 		SpringApplication.run(OskApplication.class, args);
 	}
