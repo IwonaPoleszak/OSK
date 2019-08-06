@@ -2,98 +2,119 @@ package pl.pracainz.osk.osk.entity;
 
 import java.util.Date;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+
 
 @Entity
 @Table(name="students")
 public class Student {
-
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_student")
 	private int id;
 	
-	@Column(name="name")
+	@Column
 	private String name;
 	
-	@Column(name="surname")
+	@Column
 	private String surname;
 	
-	@Column(name="birthdate")
-	private Date birthdate;
-	
-	@Column(name="street")
-	private String street;
-	
-	@Column(name="login")
+	@Column
 	private String login;
 	
-	@Column(name="buildingNumber")
+	@Column
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) 
+    @NotNull
+    @Past	
+    private Date birthdate;
+	
+	@Column
+	private String street;
+	
+	@Column
 	private String buildingNumber;
 	
-  //  @Column(name="apartmentNumber")
-	//private String apartmentNumber;
+    @Column
+	private String apartmentNumber;
 	
-	@Column(name="city")
+	@Column
 	private String city;
 	
-	@Column(name="postcode")
+	@Column
 	private String postcode;
 	
-	@Column(name="phoneNumber")
+	@Column
 	private String phoneNumber;
 	
-	@Column(name="email")
+	@Column
 	private String email;
 	
-	@Column(name="PKK")
+	@Column
 	private String PKK;
 	
-	@Column(name="deleted")
-	private boolean deleted;
 	
-	@Column(name="id_course")
-	private int id_course;
-
-
+	@Column
+	private Integer deleted;
+	
 	
 	public Student() {}
 	
 	public Student(String name, String surname
 			, String login, Date birthdate, String street, 
 			String buildingNumber,
-			//String apartmentNumber, 
+		    String apartmentNumber, 
 			String city, String postcode,
 			String phoneNumber, 
 			String email, String pKK,
-			boolean deleted, int id_course) {
-		//this.id = id;
+			 Integer deleted) {
 		this.name = name;
 		this.surname = surname;
 		this.birthdate = birthdate;
 		this.street = street;
 		this.login=login;
 		this.buildingNumber = buildingNumber;
-		//this.apartmentNumber = apartmentNumber;
+		this.apartmentNumber = apartmentNumber;
 		this.city = city;
 		this.postcode = postcode;
-		//this.phoneNumber = phoneNumber;
+		this.phoneNumber = phoneNumber;
 		this.email = email;
-		PKK = pKK;
+		this.PKK = pKK;
 		this.deleted = deleted;
-		this.id_course = id_course; 
+	
 	}
 
 
-
-
+	public Student(Integer id, String name, String surname, String login, Date birthdate, String street,
+			String buildingNumber, String apartmentNumber, String city, String postcode, String phoneNumber,
+			String email, String pKK, Integer deleted) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.login = login;
+		this.birthdate = birthdate;
+		this.street = street;
+		this.buildingNumber = buildingNumber;
+		this.apartmentNumber = apartmentNumber;
+		this.city = city;
+		this.postcode = postcode;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		PKK = pKK;
+		this.deleted = deleted;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -139,7 +160,6 @@ public class Student {
 		this.birthdate = birthdate;
 	}
 
-
 	public String getStreet() {
 		return street;
 	}
@@ -158,7 +178,7 @@ public class Student {
 		this.buildingNumber = buildingNumber;
 	}
 
-/*
+
 	public String getApartmentNumber() {
 		return apartmentNumber;
 	}
@@ -167,7 +187,7 @@ public class Student {
 	public void setApartmentNumber(String apartmentNumber) {
 		this.apartmentNumber = apartmentNumber;
 	}
-*/
+
 
 	public String getCity() {
 		return city;
@@ -183,6 +203,7 @@ public class Student {
 		return postcode;
 	}
 
+	
 
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
@@ -220,25 +241,26 @@ public class Student {
 	}
 
 
-	public boolean isDeleted() {
+	public Integer getDeleted() {
 		return deleted;
+	
 	}
 
 
-	public void setDeleted(boolean deleted) {
+	public void setDeleted(int deleted) {
 		this.deleted = deleted;
 	}
 
-
-	public int getId_course() {
-		return id_course;
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", surname=" + surname + ", login=" + login + ", birthdate="
+				+ birthdate + ", street=" + street + ", buildingNumber=" + buildingNumber + ", apartmentNumber="
+				+ apartmentNumber + ", city=" + city + ", postcode=" + postcode + ", phoneNumber=" + phoneNumber
+				+ ", email=" + email + ", PKK=" + PKK + ", deleted=" + deleted + "]";
 	}
 
 
-	public void setId_course(int id_course) {
-		this.id_course = id_course;
-	}
-	
+
 	
 	
 	
