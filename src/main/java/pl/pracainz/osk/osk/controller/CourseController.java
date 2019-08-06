@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.pracainz.osk.osk.dao.CourseRepository;
 import pl.pracainz.osk.osk.entity.Course;
 
-
 @Controller
 @RequestMapping("/courses")
 public class CourseController {
